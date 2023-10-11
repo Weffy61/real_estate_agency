@@ -12,7 +12,6 @@ def fill_owned_apartments(apps, schema_editor):
                                                      owner_pure_phone=flat.owner_pure_phone
                                                      )
         owner.owned_apartments.add(flat)
-        # print(owner.owned_apartments)
 
 
 class Migration(migrations.Migration):
