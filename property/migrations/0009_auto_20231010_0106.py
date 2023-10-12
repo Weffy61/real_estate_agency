@@ -6,11 +6,11 @@ import phonenumbers
 
 def normalize_phone_number(apps, schema_editor):
     Flat = apps.get_model('property', 'Flat')
-    country_code = '+7'
     for flat in Flat.objects.all():
         phone = flat.owners_phonenumber
         if phonenumbers.is_valid_number(phonenumbers.parse(phone, 'RU')):
-            flat.owner_pure_phone = f"{country_code}{phonenumbers.parse(phone, 'RU').national_number}"
+            flat.owner_pure_phone = f"+{phonenumbers.parse(phone, 'RU').country_code}" \
+                                    f"{phonenumbers.parse(phone, 'RU').national_number}"
         else:
             flat.owner_pure_phone = 'Телефона с таким номером не существует'
         flat.save()
