@@ -27,4 +27,4 @@ class ComplaintAdmin(admin.ModelAdmin):
 @admin.register(Owner)
 class OwnerAdmin(admin.ModelAdmin):
     search_fields = ['owner']
-    raw_id_fields = ['owned_apartments']
+    raw_id_fields = ['apartments']
