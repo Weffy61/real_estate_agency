@@ -12,7 +12,8 @@ def normalize_phone_number(apps, schema_editor):
             flat.owner_pure_phone = f"+{phone.country_code}" \
                                     f"{phone.national_number}"
         else:
-            flat.owner_pure_phone = 'Телефона с таким номером не существует'
+            flat.owner_pure_phone = None
+            print(f'Телефона с номером {phone} не существует')
         flat.save()
 
 
