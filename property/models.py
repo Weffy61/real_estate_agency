@@ -75,7 +75,7 @@ class Owner(models.Model):
                                   verbose_name='Нормализованный номер владельца',
                                   db_index=True)
     apartments = models.ManyToManyField(Flat,
-                                        related_name='owned_flats',
+                                        related_name='owners',
                                         verbose_name='Квартиры в собственности',
                                         db_index=True)
 
