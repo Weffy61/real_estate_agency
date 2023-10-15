@@ -9,8 +9,8 @@ def normalize_phone_number(apps, schema_editor):
     for flat in Flat.objects.all().iterator():
         phone = phonenumbers.parse(flat.owners_phonenumber, 'RU')
         if phonenumbers.is_valid_number(phone):
-            flat.owner_pure_phone = f"+{phone.country_code}" \
-                                    f"{phone.national_number}"
+            full_phone_number = phonenumbers.format_number(phone, phonenumbers.PhoneNumberFormat.INTERNATIONAL)
+            flat.owner_pure_phone = full_phone_number
         else:
             flat.owner_pure_phone = None
             print(f'Телефона с номером {phone} не существует')
