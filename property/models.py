@@ -59,13 +59,16 @@ class Complaint(models.Model):
                                        on_delete=models.SET_NULL,
                                        verbose_name='Кто жаловался:',
                                        null=True,
-                                       related_name='users')
+                                       related_name='apartments')
     apartment = models.ForeignKey(Flat,
                                   on_delete=models.SET_NULL,
                                   verbose_name='Квартира, на которую пожаловались:',
                                   null=True,
-                                  related_name='apartments')
+                                  related_name='users')
     text = models.TextField(verbose_name='Текст жалобы:')
+
+    def __str__(self):
+        return f'{self.who_complained}, {self.apartment}'
 
 
 class Owner(models.Model):
