@@ -59,12 +59,12 @@ class Complaint(models.Model):
                                        on_delete=models.SET_NULL,
                                        verbose_name='Кто жаловался:',
                                        null=True,
-                                       related_name='apartments')
+                                       related_name='complaints')
     apartment = models.ForeignKey(Flat,
                                   on_delete=models.SET_NULL,
                                   verbose_name='Квартира, на которую пожаловались:',
                                   null=True,
-                                  related_name='users')
+                                  related_name='complaints')
     text = models.TextField(verbose_name='Текст жалобы:')
 
     def __str__(self):
